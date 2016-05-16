@@ -1,0 +1,78 @@
+﻿@model IEnumerable<applyRequests.Models.entityRequest>
+
+@{
+    ViewBag.Title = "listWaitToSignRequests";
+}
+
+<h2>待簽核專區</h2>
+
+@using (Html.BeginForm("listWaitToSignRequests", "Home", FormMethod.Post))
+{
+    <div class="alert alert-success" role="alert" ng-controller="listWaitToSignController">
+        @Html.Partial("~/Views/Home/searchView.cshtml")
+        @*需求日期 <input name="startDate" kendo-date-picker k-options="dateTimeConfig">
+        ~ 結束日期 <input name="endDate" kendo-date-picker k-options="dateTimeConfig">
+        <input type="submit" value="查詢" />*@
+    </div>
+}
+<p />
+
+<label> 你目前查詢: @ViewData["startDate"] ~  @ViewData["endDate"]</label>
+<table class="table">
+    <tr>
+        <th>
+           申請者
+        </th>
+        <th>
+           需求日期
+        </th>      
+        <th>
+          目前流程
+        </th>
+        <th>
+          處理者
+        </th>
+        <th>
+            標題
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.applyUserName)
+        </td>     
+        <td>
+            @*@Html.DisplayFor(modelItem => item.requestDate)*@
+            <label>@item.requestDate.Value.ToString("yyyy/MM/dd")</label>
+        </td>      
+        <td>
+            @Html.DisplayFor(modelItem => item.processName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.processUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.applyTitle)
+        </td>
+        <td>           
+            @Html.ActionLink("點入簽核", "Sign", new
+       {
+           intApplyRequestID = item.ikey,
+           strFlowName = item.processAction
+       }) 
+        </td>
+    </tr>
+}
+</table>
+<script>
+    angular.module("requestApp", ["kendo.directives"]).controller("listWaitToSignController", function ($scope) {
+            $scope.dateTimeConfig = {
+                start: "day",
+                depth: "day",
+                format: "yyyy-MM-dd"
+            };
+            $scope.processAction = "other";
+        });
+</script>

@@ -1,0 +1,22 @@
+﻿需求日期 <input name="startDate" kendo-date-picker k-options="dateTimeConfig" ng-model="startDate">
+~ 結束日期 <input name="endDate" kendo-date-picker k-options="dateTimeConfig" ng-model="endDate">
+關鍵字 <input name="applyReason" type="text" width="200" value="@ViewData["viewApplyReason"]" />
+<br /><br />
+
+@if (ViewData["page"] == "listRequests")
+  {
+    <labe>審核狀態 &nbsp;&nbsp;</labe>
+    @Html.RadioButton("processAction", "", (ViewData["viewProcessAction"] == ""))<label>全選&nbsp;&nbsp;</label>
+    @Html.RadioButton("processAction", "other", (ViewData["viewProcessAction"] == "other"))<label>審核中&nbsp;&nbsp;</label>
+    @Html.RadioButton("processAction", "end", (ViewData["viewProcessAction"] == "end"))<label>完工&nbsp;&nbsp;</label>
+    @Html.RadioButton("processAction", "complete", (ViewData["viewProcessAction"] == "complete"))<label>審核通過&nbsp;&nbsp;</label>
+    @Html.RadioButton("processAction", "reject", (ViewData["viewProcessAction"] == "reject"))<label>審核不通過&nbsp;&nbsp;</label>
+  }
+else if (ViewData["page"] == "listSignedRequests")
+{
+    @Html.RadioButton("processAction", "", (ViewData["viewProcessAction"] == ""))<label>全選&nbsp;&nbsp;</label>
+    @Html.RadioButton("processAction", "end", (ViewData["viewProcessAction"]=="end"))<label>完工&nbsp;&nbsp;</label>
+    @Html.RadioButton("processAction", "reject", (ViewData["viewProcessAction"] == "reject"))<label>審核不通過&nbsp;&nbsp;</label>
+}
+  
+<input type="submit" value="查詢" />

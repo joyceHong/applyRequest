@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TCSNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TCSNewEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="alluser" EntityType="TCSNewModel.alluser" />
+    <EntitySet Name="applyRequestsAuthorization" EntityType="TCSNewModel.applyRequestsAuthorization" />
+    <FunctionImport Name="IdentifyLogin3" ReturnType="Collection(Int32)">
+      <Parameter Name="Account" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="lIp" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="applyRequests" EntityType="TCSNewModel.applyRequests" />
+  </EntityContainer>
+  <EntityType Name="alluser">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="seq" Type="Int16" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="regin" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="regout" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="regs" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="addr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="uoid" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="upwd" Type="String" MaxLength="28" FixedLength="false" Unicode="false" />
+    <Property Name="usrgrp" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="userright" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sarea" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="specialo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="specialx" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="show" Type="Boolean" Nullable="false" />
+    <Property Name="staff" Type="Boolean" Nullable="false" />
+    <Property Name="ordertype" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="bdy" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="bdmn" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="skey" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="applyRequestsAuthorization">
+    <Key>
+      <PropertyRef Name="ikey" />
+    </Key>
+    <Property Name="ikey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="bossID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="isRDDispatch" Type="Boolean" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="useProcess" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="applyRequests">
+    <Key>
+      <PropertyRef Name="ikey" />
+    </Key>
+    <Property Name="ikey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="applyUser" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="requestDate" Type="DateTime" Precision="0" />
+    <Property Name="applyDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="applyTitle" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="applyReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="applyType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="predictCompleteDate" Type="DateTime" Precision="0" />
+    <Property Name="processFlow" Type="Int32" Nullable="false" />
+    <Property Name="processName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="processUser" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="accepTaskUser" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="processAction" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="rejectReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="completeDate" Type="DateTime" Precision="0" />
+  </EntityType>
+</Schema>

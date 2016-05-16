@@ -1,0 +1,27 @@
+﻿@model applyRequests.Models.alluser
+<br />
+@using (Html.BeginForm("bossSignView", "Home", FormMethod.Post))
+{
+    <div class="panel panel-default" ng-controller="bossSignViewController">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2">
+                    主管簽核動作
+                </div>
+                <div class="col-md-4">
+                    <input type="button" value="核可" onclick="location.href='@Url.Action("agree", "Home", new
+                                                                       {
+                                                                           applyRequestID = ViewData["applyRequestID"]
+                                                                       })'" />                    
+                    <input type="submit" value="不准" id="strRejectReason" onclick="if (document.getElementById('rejectReasonText').value == '') { alert('請輸入不准的原因'); return false };" />
+                    @Html.TextBox("rejectReasonText", null)
+                    @Html.Hidden("applyRequestID", ViewData["applyRequestID"])        
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div sign-view-template></div>           
+        </div>
+    </div>
+}
+<script src="~/Scripts/signViewTemplate.js"></script>

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<applyRequests.Models.entityRequest>
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>申請案件</h2>
+@using (Html.BeginForm("listRequests", "Home", FormMethod.Post))
+{
+    <div class="alert alert-success" role="alert" ng-controller="listRequestsController">        
+        @Html.Partial("~/Views/Home/searchView.cshtml")
+    </div>
+    <p />
+    
+    <label> 你目前查詢: @ViewData["startDate"] ~  @ViewData["endDate"]</label>
+}
+<br />
+<p>
+    @Html.ActionLink("新增案件", "applyRequest")
+</p>
+<font color="red">@Html.ViewData["Message"]</font>
+<table class="table">
+    <tr>
+        <th>
+           申請者
+        </th>      
+        <th>
+          需求日期
+        </th>      
+        <th>
+           目前流程
+        </th>
+        <th>
+           目前處理者
+        </th>
+        <th>
+            標題
+        </th>
+        <th>
+            審核結果
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.applyUserName)
+        </td>
+        <td>
+            <label>@item.requestDate.Value.ToString("yyyy/MM/dd")</label>
+            @*@item.requestDate.GetDateTimeFormats("yyyy/MMdd/");*@
+            @*@Html.DisplayFor(modelItem => item.requestDate)*@
+        </td>  
+        <td>
+            @Html.DisplayFor(modelItem => item.processName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.processUser)
+        </td>      
+        <td>
+            @Html.DisplayFor(modelItem => item.applyTitle)
+        </td>  
+        <td>
+               
+                @switch (item.processAction.Trim())
+                {
+                    case "complete":
+                        <label>審核通過</label>
+                        break;
+                    case "end":
+                        <label>完工</label>
+                        break;
+                    case "reject":
+                        <label>審核不通過</label>
+                        break;
+                    default:
+                        <label>審核中</label>
+                        break;
+                }
+        </td>  
+        <td>
+            @if (item.processAction.Trim() == "boss" || (item.processType == "flow2" && item.processAction.Trim() == "rdDispatch"))
+            {
+                @Html.ActionLink("編輯", "edit", new{id = item.ikey})                
+            }
+            |          
+            @Html.ActionLink("詳細", "Details", new {  id=item.ikey }) |
+@if (item.processAction.Trim() == "boss" || (item.processType == "flow2" && item.processAction.Trim() == "rdDispatch"))
+            {
+            @Html.ActionLink("刪除", "Delete", new{id = item.ikey}, new  {onclick = "return confirm('確認刪除此筆需求單嗎?');"})
+            }
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+    angular.module("requestApp", ["kendo.directives"]).controller("listRequestsController", function ($scope) {
+        $scope.dateTimeConfig = {
+            start: "day",
+            depth: "day",
+            format: "yyyy-MM-dd"
+        };
+
+        $scope.processAction = "other";
+    })
+</script>

@@ -1,0 +1,38 @@
+﻿@model applyRequests.Models.entityRequest
+    <div class="row">
+        <div class="col-md-1">
+            申請人
+        </div>
+        <div class="col-md-4">
+            @Html.ValueFor(m => m.applyUserName)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            需求日期
+        </div>
+        <div class="col-md-4">
+            @Html.ValueFor(m => m.requestDate)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+           標題
+        </div>
+        <div class="col-md-4">
+            @Html.ValueFor(m => m.applyTitle)            
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+            申請理由
+        </div>
+        <div class="col-md-4">
+            @Html.Raw(Model.applyReason)
+        </div>
+    </div>
+<div class="row">
+    <button onclick="window.history.go(-1)">返回上一頁</button>
+</div>

@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+<h1>新增申請案件</h1>
+<div ng-controller="MyCtrl">  
+    <div class="row">
+            <div class="col-md-1">
+                申請人
+            </div>
+            <div class="col-md-4">
+                <select kendo-combo-box ng-model="applyUser" ng-options="user as user.name for user in users"></select>
+            </div>
+        </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+            申請日期
+        </div>
+        <div class="col-md-4">
+            <input kendo-date-picker k-options="monthPickerConfig" ng-model="applyDate">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+            性質
+        </div>
+        <div class="col-md-4">
+            <select ng-model="type" kendo-combo-box ng-options="item as item.name for item in applyItems"></select>            
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+           需求內容
+        </div>
+        <div class="col-md-8">
+            <textarea kendo-editor ng-model="context"></textarea>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+            處理人員
+        </div>
+        <div class="col-md-8">
+            <select kendo-combo-box ng-model="dealUser" ng-options="user as user.name for user in users"></select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-default">儲存</button>
+ </div> 
+}      
+<script>
+angular.module("requestApp", ["kendo.directives"]).controller("MyCtrl", function ($scope) {
+                $scope.monthPickerConfig = {
+                    start: "day",
+                    depth: "day",
+                    format: "yyyy-MM-dd"
+                };
+
+                $scope.users = [
+                    {id:1, name:'王美麗'},
+                    {id:2, name: '曾添財' },
+                    {id:3, name:'鄭成功'}
+                ];
+
+                $scope.applyItems = [
+                  { id: 1, name: '轉檔' },
+                  { id: 2, name: '專案支援' },
+                  { id: 3, name: '線上支援' },
+                  { id: 4, name: '其他' }
+                ];
+
+
+
+
+});
+
+</script>

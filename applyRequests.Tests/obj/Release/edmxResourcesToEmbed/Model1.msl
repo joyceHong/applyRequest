@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TCSNewModelStoreContainer" CdmEntityContainer="TCSNewEntities1">
+    <EntitySetMapping Name="alluser">
+      <EntityTypeMapping TypeName="TCSNewModel.alluser">
+        <MappingFragment StoreEntitySet="alluser">
+          <ScalarProperty Name="seq" ColumnName="seq" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="regin" ColumnName="regin" />
+          <ScalarProperty Name="regout" ColumnName="regout" />
+          <ScalarProperty Name="regs" ColumnName="regs" />
+          <ScalarProperty Name="addr" ColumnName="addr" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="uoid" ColumnName="uoid" />
+          <ScalarProperty Name="upwd" ColumnName="upwd" />
+          <ScalarProperty Name="usrgrp" ColumnName="usrgrp" />
+          <ScalarProperty Name="userright" ColumnName="userright" />
+          <ScalarProperty Name="sarea" ColumnName="sarea" />
+          <ScalarProperty Name="specialo" ColumnName="specialo" />
+          <ScalarProperty Name="specialx" ColumnName="specialx" />
+          <ScalarProperty Name="show" ColumnName="show" />
+          <ScalarProperty Name="staff" ColumnName="staff" />
+          <ScalarProperty Name="ordertype" ColumnName="ordertype" />
+          <ScalarProperty Name="bdy" ColumnName="bdy" />
+          <ScalarProperty Name="bdmn" ColumnName="bdmn" />
+          <ScalarProperty Name="skey" ColumnName="skey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="applyRequests">
+      <EntityTypeMapping TypeName="TCSNewModel.applyRequests">
+        <MappingFragment StoreEntitySet="applyRequests">
+          <ScalarProperty Name="completeDate" ColumnName="completeDate" />
+          <ScalarProperty Name="rejectReason" ColumnName="rejectReason" />
+          <ScalarProperty Name="processAction" ColumnName="processAction" />
+          <ScalarProperty Name="accepTaskUser" ColumnName="accepTaskUser" />
+          <ScalarProperty Name="processUser" ColumnName="processUser" />
+          <ScalarProperty Name="processName" ColumnName="processName" />
+          <ScalarProperty Name="processFlow" ColumnName="processFlow" />
+          <ScalarProperty Name="predictCompleteDate" ColumnName="predictCompleteDate" />
+          <ScalarProperty Name="applyType" ColumnName="applyType" />
+          <ScalarProperty Name="applyReason" ColumnName="applyReason" />
+          <ScalarProperty Name="applyDate" ColumnName="applyDate" />
+          <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+          <ScalarProperty Name="applyUser" ColumnName="applyUser" />
+          <ScalarProperty Name="ikey" ColumnName="ikey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="applyRequestsAuthorization">
+      <EntityTypeMapping TypeName="TCSNewModel.applyRequestsAuthorization">
+        <MappingFragment StoreEntitySet="applyRequestsAuthorization">
+          <ScalarProperty Name="useProcess" ColumnName="useProcess" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="isRDDispatch" ColumnName="isRDDispatch" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="bossID" ColumnName="bossID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="ikey" ColumnName="ikey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

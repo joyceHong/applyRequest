@@ -1,0 +1,13 @@
+﻿<li ng-repeat="document in documents" ng-controller="sampleController" >
+<script>
+ angular.module("requestApp", ["kendo.directives"])
+            .controller("sampleController", function ($scope, $http) {
+                $scope.documents = [];
+                $http.get('/api/UserAPI')
+                  .then(function (result) {
+                      $scope.documents = result.data;
+                      console.log($scop.documents);
+                  });
+        });
+       
+</script>

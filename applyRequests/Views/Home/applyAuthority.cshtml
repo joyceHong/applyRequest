@@ -1,0 +1,107 @@
+﻿
+@model IEnumerable<applyRequests.Models.authorityRole>
+<style>
+    table {
+        
+        border:1px dashed rgba(83, 167, 161, 0.44);
+
+    }
+
+
+
+    td{
+        background-color: rgba(62, 147, 98, 0.51);
+        margin:20px 20px 20px 20px;
+        padding:20px 20px 20px 20px;
+    }
+
+</style>
+
+@using (Html.BeginForm("applyAuthority", "Home", FormMethod.Post))
+{
+    <p></p><br />
+    <table>
+        <tr>
+            <th>員工姓名</th>
+            <th>員工主管姓名</th>
+            <th>gmail 帳號</th>
+            <th>流程</th>
+        </tr>
+        <tr>
+            <td>@Html.DropDownList("userID")</td>
+            <td>
+                @Html.DropDownList("userBossID")
+            </td>
+            <td>
+                @Html.TextBox("gmail")
+            </td>
+            <td>
+                @Html.DropDownList("flow")
+            </td>
+            <td>
+                @Html.DropDownList("department")
+            </td>
+        </tr>
+    </table>
+    <input type="submit" name="新增" value="add" />
+}
+
+<hr />
+
+<table>
+    <tr>
+        <th>員工姓名</th>
+        <th>員工主管姓名</th>
+        <th>gmail 帳號</th>
+        <th>部門</th>
+        <th>權限</th>
+    </tr>
+@foreach (var item in Model)
+{
+        <tr>
+        <td>
+            @Html.DisplayFor(modelData=>item.strUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelData => item.strBossUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelData => item.strEmail)
+        </td>
+        <td>
+            @switch (item.Department)
+                {
+                    case "1":
+                        <label>業務</label>
+                        break;
+                    case "2":
+                    <label>工程</label>
+                        break;
+                    case "3":
+                    <label>研發部</label>
+                        break;
+                    case "4":
+                    <label>客服部</label>
+                        break;
+                    default:
+                    <label></label>
+                        break;
+                }
+        </td>
+            <td>
+              @switch (item.flow)
+                {
+                    case "flow1":
+                        <label>一般</label>
+                        break;
+                    case "flow2":
+                    <label>主管</label>
+                        break;                    
+                    default:
+                    <label></label>
+                        break;
+                }
+            </td>
+    </tr>
+}
+</table>

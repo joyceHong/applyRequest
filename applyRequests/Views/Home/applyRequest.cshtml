@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model applyRequests.Models.applyRequests
+@using (Html.BeginForm("applyRequest", "Home", FormMethod.Post))
+{
+    <h1>申請案件</h1>
+    <div ng-controller="MyCtrl">
+        <div class="row">
+            <div class="col-md-1">
+                申請人
+            </div>
+            <div class="col-md-4">
+                <select id="applyUser" name="applyUser"></select>
+                <input id="hiddenUserID" type="hidden" value="@ViewData["viewapplyuser"]" />
+                @*<select name="applyUser" kendo-combo-box ng-model="applyUser" ng-options="user as user.strRoleUserName for user in users"></select>*@
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1">
+                需求日期
+            </div>
+            <div class="col-md-4">
+                <input name="applyDate" kendo-date-picker k-options="monthPickerConfig" ng-model="applyDate" required>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1">
+                標題
+            </div>
+            <div class="col-md-4">
+                <input name="applyTitle" required maxlength="100" />
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col-md-1">
+                性質
+            </div>
+            <div class="col-md-4">
+                <select ng-model="type" name="applyType" kendo-combo-box ng-options="item as item.name for item in applyItems"></select>
+            </div>
+        </div>*@
+        <br />
+        <div class="row">
+            <div class="col-md-1">
+                需求內容
+            </div>
+            <div class="col-md-8">                
+                @*<textarea kendo-editor ng-model="applyReason" id="applyReason" name="applyReason" placeholder="必填"></textarea>*@
+                @(Html.Kendo().Editor()
+              .Name("applyReason")
+                      .HtmlAttributes(new
+                      {
+                          style = "width: 740px;height:440px"
+                      })
+                      .Tools(tools => tools
+                          .Clear()
+                          .Bold().Italic().Underline().Strikethrough()
+                          .JustifyLeft().JustifyCenter().JustifyRight().JustifyFull()
+                          .InsertUnorderedList().InsertOrderedList()
+                          .Outdent().Indent()
+                          .CreateLink().Unlink()
+                          .InsertImage()
+                          .InsertFile()
+                          .SubScript()
+                          .SuperScript()
+                          .TableEditing()
+                          .ViewHtml()
+                          .Formatting()
+                          .CleanFormatting()
+                          .FontName()
+                          .FontSize()
+                          .FontColor().BackColor()
+              ).ImageBrowser(imageBrowser => imageBrowser
+                    .Image("~/Content/UserFiles/Images/{0}")
+                    .Read("Read", "ImageBrowser")
+                    .Create("Create", "ImageBrowser")
+                    .Destroy("Destroy", "ImageBrowser")
+                    .Upload("Upload", "ImageBrowser")
+                    .Thumbnail("Thumbnail", "ImageBrowser"))
+             .FileBrowser(fileBrowser => fileBrowser
+                    .File("~/Content/UserFiles/Images/{0}")
+                    .Read("Read", "FileBrowser")
+                    .Create("Create", "FileBrowser")
+                    .Destroy("Destroy", "FileBrowser")
+                    .Upload("Upload", "FileBrowser")
+            ))
+</div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-default">儲存</button>
+    </div>
+}
+<script>
+    angular.module("requestApp", ["kendo.directives"]).factory("usersFactory", function ($http) {
+        return {
+            getUsers: function () {
+                return $http({
+                    url: '../api/UserAPI?userListType=allUser',
+                    method: 'GET'
+                })
+            }
+        }
+    }).controller("MyCtrl", function ($scope, $http, usersFactory) {
+            $scope.monthPickerConfig = {
+                start: "day",
+                depth: "day",
+                format: "yyyy-MM-dd"
+            };
+
+            $(document).ready(function () {
+               
+                $.ajax({
+                    url: "../api/UserAPI?userListType=allUsers&userID="+$("#hiddenUserID").val(),
+                    type: "Get",
+                    success: function (data) {
+                        var mySelect = $('#applyUser');
+                        $.each(data, function (i, item) {
+                            mySelect.append(
+                                $('<option></option>').val(item.strRoleUserID).html(item.strRoleUserName)
+                            );
+                        });
+
+                        $('#applyUser').val($("#hiddenUserID").val());
+                    },
+                    error: function (msg) { alert(msg); }
+                });
+            });
+        });
+</script>
+

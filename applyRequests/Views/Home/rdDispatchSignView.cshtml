@@ -1,0 +1,25 @@
+﻿@model applyRequests.Models.alluser
+<br />
+@using (Html.BeginForm("rdDispatchSignView", "Home", FormMethod.Post))
+{
+    <div class="panel panel-default" ng-controller="rdDispatchSignViewController">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2">
+                    選擇負責處理人員
+                </div>
+                <div class="col-md-4">
+                    <select id="taskUser" name="taskUser"></select>
+                    @*<select id="taskUser" kendo-combo-box ng-model="taskUser" ng-options="obj as obj.strRoleUserName for obj in taskusers"></select>*@
+                    @*<input type="hidden" name="applyUserID" value="{{ taskUser.strRoleUserID }}" />*@
+                    @Html.Hidden("applyRequestID", ViewData["applyRequestID"])
+                    <input type="submit" value="送出" />
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div sign-view-template></div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/rdDispatchSignView.js"></script>

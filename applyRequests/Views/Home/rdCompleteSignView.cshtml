@@ -1,0 +1,22 @@
+﻿<br />
+@using (Html.BeginForm("rdCompleteSignView", "Home", FormMethod.Post))
+{
+    <div class="panel panel-default" ng-controller="rdCompleteSignViewController">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2">
+                    主管簽核動作
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" value="完工" id="btnComplete" />                    
+                    @Html.Hidden("applyRequestID", ViewData["applyRequestID"])
+                    @Html.Hidden("complete", true)
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div sign-view-template></div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/signViewTemplate.js"></script>

@@ -1,0 +1,40 @@
+﻿<br />
+@using (Html.BeginForm("rdAcceptTaskUserSignView", "Home", FormMethod.Post))
+{
+    <div class="panel panel-default" ng-controller="rdDispatchSignViewController">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-2">
+                    RD處理人員
+                </div>
+                <div class="col-md-8">
+                    
+                    @Html.Hidden("applyRequestID", ViewData["applyRequestID"])                   
+                    &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="同意" name="submit" onclick="if (document.getElementById('predictCompleteDate').value == '') { alert('請輸入完工日期'); return false };">
+                    <input id="predictCompleteDate" name="predictCompleteDate" kendo-date-picker k-options="monthPicker"> 預計完工 &nbsp;&nbsp;
+                    <input name="submit" type="submit" value="不同意" onclick="if (document.getElementById('rejectReasonText').value == '') { alert('請輸入不准的原因'); return false };" />
+                    @Html.TextBox("rejectReasonText", null, new
+               {
+                   @inline = "true"
+               })
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div sign-view-template></div>
+        </div>
+    </div>
+}
+<script>
+    //jQuery 
+    $(document).ready(function () {
+        function submit( param1, param2) {
+            $.ajax({
+                url: @Url.Action("agree", "Home") + '?applyRequestID=' + param1 +
+                                                  '&predictcompletedate='+ param2,
+                type: 'POST',
+            });
+        }
+    });
+</script>
+<script src="~/Scripts/rdDispatchSignView.js"></script>

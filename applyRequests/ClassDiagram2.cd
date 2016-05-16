@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="applyRequests.Models.entityFlowRole">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAABEAAAQAAAAEAAAAAAAgAgAA=</HashCode>
+      <FileName>Models\entityFlowRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.controlEmail">
+    <Position X="1.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\controlEmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.entityIdentity">
+    <Position X="5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\entityIdentity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.controlDoActioncs">
+    <Position X="1.75" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAgAAgAAAgAAEIAQBUgAAQABAAEBEAgAgAEAAAA=</HashCode>
+      <FileName>Models\controlDoActioncs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.entityProcessFlow">
+    <Position X="5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAIAAAgQAAAAAAAIAAACAgABAAA=</HashCode>
+      <FileName>Models\entityProcessFlow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.entityRequest">
+    <Position X="10.25" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AABCACgAAgAYAAAAAIAAEKAIAAAAIgCAEAwDlAIIgAE=</HashCode>
+      <FileName>Models\entityRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.FlowItem">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAEgAAAAAAAEBAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FlowItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.flowAction">
+    <Position X="7.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FlowItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="applyRequests.Models.flowRole">
+    <Position X="7.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAABAAIEAAAAAAAAgQAAAEAAAAAA=</HashCode>
+      <FileName>Models\flowRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微軟正黑體" Size="9" />
+</ClassDiagram>

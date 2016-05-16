@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TCSNewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alluser">
+    <Key>
+      <PropertyRef Name="uid" />
+    </Key>
+    <Property Name="seq" Type="smallint" Nullable="false" />
+    <Property Name="name" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="regin" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="regout" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="regs" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="addr" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="uid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="uoid" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="upwd" Type="varchar" MaxLength="28" />
+    <Property Name="usrgrp" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="userright" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="sarea" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="specialo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="specialx" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="show" Type="bit" Nullable="false" />
+    <Property Name="staff" Type="bit" Nullable="false" />
+    <Property Name="ordertype" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="bdy" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="bdmn" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="skey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="applyRequests">
+    <Key>
+      <PropertyRef Name="ikey" />
+    </Key>
+    <Property Name="ikey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="applyUser" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="requestDate" Type="date" />
+    <Property Name="applyDate" Type="date" Nullable="false" />
+    <Property Name="applyTitle" Type="nchar" MaxLength="100" />
+    <Property Name="applyReason" Type="text" />
+    <Property Name="applyType" Type="nchar" MaxLength="10" />
+    <Property Name="predictCompleteDate" Type="date" />
+    <Property Name="processFlow" Type="int" Nullable="false" />
+    <Property Name="processName" Type="nchar" MaxLength="20" />
+    <Property Name="processUser" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="accepTaskUser" Type="nchar" MaxLength="20" />
+    <Property Name="processAction" Type="nchar" MaxLength="20" />
+    <Property Name="rejectReason" Type="text" />
+    <Property Name="completeDate" Type="date" />
+  </EntityType>
+  <EntityType Name="applyRequestsAuthorization">
+    <Key>
+      <PropertyRef Name="ikey" />
+    </Key>
+    <Property Name="ikey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="bossID" Type="varchar" MaxLength="10" />
+    <Property Name="department" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="isRDDispatch" Type="bit" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="useProcess" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="TCSNewModelStoreContainer">
+    <EntitySet Name="alluser" EntityType="Self.alluser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="applyRequests" EntityType="Self.applyRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="applyRequestsAuthorization" EntityType="Self.applyRequestsAuthorization" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TCSNewModelStoreContainer" CdmEntityContainer="TCSNewEntities">
+    <EntitySetMapping Name="applyRequests">
+      <EntityTypeMapping TypeName="TCSNewModel.applyRequests">
+        <MappingFragment StoreEntitySet="applyRequests">
+          <ScalarProperty Name="ikey" ColumnName="ikey" />
+          <ScalarProperty Name="applyUser" ColumnName="applyUser" />
+          <ScalarProperty Name="applyDate" ColumnName="applyDate" />
+          <ScalarProperty Name="applyReason" ColumnName="applyReason" />
+          <ScalarProperty Name="applyType" ColumnName="applyType" />
+          <ScalarProperty Name="processFlow" ColumnName="processFlow" />
+          <ScalarProperty Name="processName" ColumnName="processName" />
+          <ScalarProperty Name="processUser" ColumnName="processUser" />
+          <ScalarProperty Name="accepTaskUser" ColumnName="accepTaskUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

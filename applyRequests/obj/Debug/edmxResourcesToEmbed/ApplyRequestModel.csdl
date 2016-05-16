@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TCSNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="applyRequests">
+    <Key>
+      <PropertyRef Name="ikey" />
+      <PropertyRef Name="applyUser" />
+      <PropertyRef Name="applyDate" />
+      <PropertyRef Name="processFlow" />
+      <PropertyRef Name="processUser" />
+    </Key>
+    <Property Name="ikey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="applyUser" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="applyDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="applyReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="applyType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="processFlow" Type="Int32" Nullable="false" />
+    <Property Name="processName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="processUser" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="accepTaskUser" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="TCSNewEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="applyRequests" EntityType="Self.applyRequests" />
+  </EntityContainer>
+</Schema>
