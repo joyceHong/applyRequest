@@ -22,7 +22,7 @@ namespace applyRequests.Controllers
         public ActionResult login()
         {
             Session["uid"] = "";
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page223344.";
             return View();
         }
 
